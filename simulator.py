@@ -157,10 +157,8 @@ def q3(title):
     print("pidle: " + str(p_idle))
     output.append([rho, en, p_idle, res['idle_observations'], res['observer_event_count']])
   a = np.asarray(output)
-  np.savetxt(title, a, delimiter=",")
+  np.savetxt(f'{title}.csv', a, delimiter=",")
   print('done!')
-
-q3('ece358lab1q3withOwnRandom.csv')
 
 def stability_test():
   s = Simulator(125, 1000000, 2000)
@@ -170,16 +168,16 @@ def stability_test():
   en2 = sum(res2['packet_counts'])/res2['observer_event_count']
   return en1/en2
 
-def q4(title):
+def q4():
   rho = 1.2
   lam = 1.2/0.002
   s = Simulator(int(lam), 1000000, 2000)
   res = s.simulate(1000)
-  en = sum(res['packet_counts'])/res['observer_event_count']
+  # en = sum(res['packet_counts'])/res['observer_event_count']
   p_idle = res['idle_time']
   print(en)
   print(p_idle)
-  np.savetxt("ece358lab1q4.csv", np.asarray(res['packet_counts']), delimiter=",")
+  # np.savetxt("ece358lab1q4.csv", np.asarray(res['packet_counts']), delimiter=",")
 
 
 # s = Simulator(250,1000000,2000)

@@ -116,7 +116,7 @@ class Simulator:
     return observations
 
 
-def q5():
+def q5(title):
   k = [10, 25, 50]
   for i in k:
     rho_output = []
@@ -131,6 +131,12 @@ def q5():
       idle_counts = res['idle_observations']
       packets_lost = res['lost_packet_count']
       rho_output.append([rho, en, idle_counts, res['observation_event_count'], packets_lost, res['arrival_event_count'] ])
-    np.savetxt(f'ece359q5k{i}customRandom.csv', rho_output, delimiter=',')
+    np.savetxt(f'{title}.csv', rho_output, delimiter=',')
 
-q5()
+def stability_test():
+  s = Simulator(125, 1000000, 2000)
+  res1 = s.simulate(1000, 25)
+  res2 = s.simulate(2000, 25)
+  en1 = sum(res1['packet_counts'])/res1['observation_event_count']
+  en2 = sum(res2['packet_counts'])/res2['observation_event_count']
+  return en1/en2
