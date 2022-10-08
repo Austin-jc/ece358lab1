@@ -39,8 +39,8 @@ class Simulator:
       return (-1/avg)*np.log(1-uniform_dist[0])
     return [(-1/avg)*np.log(1-u) for u in uniform_dist]
 
-  def simulate(self, time, buffersize=0):
-    trafficQueue = Queue(maxsize=buffersize) # use standard queue of infinite size. get() is O(1)
+  def simulate(self, time):
+    trafficQueue = Queue(maxsize=0) # use standard queue of infinite size. get() is O(1)
     observation_data = { 
       'packet_counts': [],
       'idle_time': 0,
@@ -121,25 +121,6 @@ class Simulator:
     return desQueue
 
 
-
-# res = s.simulate(1000)
-
-# arrivals = s.generate_packet_arrivals(1000)
-# packet_lengths = [a['packet_length'] for a in arrivals]
-# sum(packet_lengths)/len(packet_lengths)
-
-# sum(res['packet_counts'])/res['observer_event_count']
-# res['idle_time']
-
-# res = s.simulate(2000)
-
-# arrivals = s.generate_packet_arrivals(1000)
-# packet_lengths = [a['packet_length'] for a in arrivals]
-# sum(packet_lengths)/len(packet_lengths)
-
-# sum(res['packet_counts'])/res['observer_event_count']
-# res['idle_time']
-
 def q3(title):
   output = []
   for i in range(25,96):
@@ -169,7 +150,6 @@ def stability_test():
   return en1/en2
 
 def q4():
-  rho = 1.2
   lam = 1.2/0.002
   s = Simulator(int(lam), 1000000, 2000)
   res = s.simulate(1000)
@@ -179,8 +159,3 @@ def q4():
   print(p_idle)
   # np.savetxt("ece358lab1q4.csv", np.asarray(res['packet_counts']), delimiter=",")
 
-
-# s = Simulator(250,1000000,2000)
-# res = s.simulate(1000)
-# print(res['idle_time'])
-# print(res['lost_packet_count'])
