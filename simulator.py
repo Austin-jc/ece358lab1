@@ -3,28 +3,6 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from queue import Queue
 
-def plot_exponential_data(data):
-  hist, edges = np.histogram(data, bins="auto", density=True)
-
-  x = edges[:-1] + np.diff(edges) / 2.
-  plt.scatter(x, hist)
-
-  func = lambda x, beta: 1. / beta * np.exp(-x / beta)
-
-  popt, pcov = curve_fit(f=func, xdata=x, ydata=hist)
-
-  print(popt)
-
-  xx = np.linspace(0, x.max(), 101)
-  plt.plot(xx,
-           func(xx, *popt),
-           ls="--",
-           color="k",
-           label="fit, $beta = ${}".format(popt))
-  plt.legend()
-  plt.show()
-  return
-
 #classes might be overkill
 class Simulator:
   def __init__(self, lam, transmission_rate, avg_packet_length, observer_rate_multiplier = 5):
