@@ -29,4 +29,4 @@ $ python3 q1.py
 q1, q3 and q6 will return csv files with the data
 
 
-
+IF IT DOESNT WORK MAKE SURE ECEUbuntu HAS PYTHON3
