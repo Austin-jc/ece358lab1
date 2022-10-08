@@ -24,4 +24,4 @@ alternatively, you can get the answers to the questions by adding a call to one 
 in simulator.py you can add q3(<outputfilename>), q4(), or stability_test() to the bottom of the file and just run it to get the results.
 in finiteSimulator.py you can add q5() or stability_test()
 
-
+IF IT DOESNT WORK MAKE SURE ECEUbuntu HAS PYTHON3
