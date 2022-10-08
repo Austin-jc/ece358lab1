@@ -17,7 +17,7 @@ def q1(lam):
   return  { 'means': means, 'vars': variances }
 
 res = q1(75)
-with open('q1output.csv', 'w') as csvfile:
+with open('q1output.csv', 'w', newline='') as csvfile:
   writer = csv.writer(csvfile)
   writer.writerow(res.keys())
   writer.writerows(zip(*res.values()))

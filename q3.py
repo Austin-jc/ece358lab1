@@ -16,7 +16,7 @@ def q3():
     # sum(packet_lengths)/len(packet_lengths)
     en = sum(res['packet_counts'])/res['observer_event_count']
     output.append([rho, en, res['idle_observations'], res['observer_event_count']])
-  with open('q3output.csv', 'w') as csvfile:
+  with open('q3output.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(headers)
     writer.writerows(output)
